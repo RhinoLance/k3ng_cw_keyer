@@ -2,10 +2,10 @@
 #ifndef keyer_pin_settings_h
 #define keyer_pin_settings_h
 
-#define paddle_left 2
-#define paddle_right 5
-#define tx_key_line_1 11       // (high = key down/tx on)
-#define tx_key_line_2 12
+#define paddle_left 6
+#define paddle_right 7
+#define tx_key_line_1 3       // (high = key down/tx on)
+#define tx_key_line_2 2
 #define tx_key_line_3 0
 #define tx_key_line_4 0
 #define tx_key_line_5 0
@@ -24,7 +24,7 @@
 #define potentiometer_enable_pin 0  // if defined, the potentiometer will be enabled only when this pin is held low; set to 0 to ignore this pin
 
 #ifdef FEATURE_BUTTONS
-  #define analog_buttons_pin A1
+  #define analog_buttons_pin 27
   #define command_mode_active_led 0
 #endif //FEATURE_BUTTONS
 
@@ -75,8 +75,8 @@ FEATURE_SIDETONE_SWITCH
 // rotary encoder pins and options - rotary encoder code from Jim Balls M0CKE
 #ifdef FEATURE_ROTARY_ENCODER
   #define OPTION_ENCODER_HALF_STEP_MODE     // Half-step mode?
-  #define rotary_pin1 0                      // CW Encoder Pin
-  #define rotary_pin2 0                    // CCW Encoder Pin
+  #define rotary_pin1 10                      // CW Encoder Pin
+  #define rotary_pin2 11                    // CCW Encoder Pin
   #define OPTION_ENCODER_ENABLE_PULLUPS     // define to enable weak pullups.
 #endif //FEATURE_ROTARY_ENCODER
 
