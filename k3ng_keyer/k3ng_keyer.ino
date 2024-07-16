@@ -3797,7 +3797,7 @@ void service_display() {
          lcd.setCursor(0,y);
          #else
          lcd.setCursor(0,y*2);
-         #endif;
+         #endif
       }
     } else {
       if (lcd_scroll_buffer[y].charAt(x) > 0){
