@@ -17503,6 +17503,7 @@ byte play_memory(byte memory_number) {
 
   } //for (int y = (memory_start(memory_number)); (y < (memory_end(memory_number)+1)); y++)
 
+  return 0;
 }
 #endif
 
