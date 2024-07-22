@@ -66,6 +66,13 @@ FEATURE_SIDETONE_SWITCH
   #define lcd_d7 7
 #endif //FEATURE_LCD1602_N07DH
 
+// The Pi PICO has multiple I2C buses, exposed on multiple pins, so we need to specify which ones to use
+#if defined(ARDUINO_RASPBERRY_PI_PICO_W) || defined(ARDUINO_RASPBERRY_PI_PICO)
+  const byte PICO_I2C_SDA = 20;
+  const byte PICO_I2C_SCL = 21;
+  const byte PICO_I2C_BUS = 0;  // 0 = I2C0, 1 = I2C1
+#endif
+
 //ps2 keyboard pins
 #ifdef FEATURE_PS2_KEYBOARD
   #define ps2_keyboard_data A3
