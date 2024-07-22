@@ -18729,9 +18729,19 @@ void initialize_display(){
 
     #ifdef FEATURE_OLED_SSD1306 
       
-      Wire.begin();
-      Wire.setClock(400000L);
-      
+      #if defined(ARDUINO_RASPBERRY_PI_PICO_W) || defined(ARDUINO_RASPBERRY_PI_PICO)
+        TwoWire wire = PICO_I2C_BUS == 0 ? Wire : Wire1;
+
+        wire.setSDA(PICO_I2C_SDA);
+        wire.setSCL(PICO_I2C_SCL);
+
+        wire.begin();
+        wire.setClock(400000L);
+      #else
+        Wire.begin();
+        Wire.setClock(400000L);
+      #endif
+
       if( oled_height == 64 ) {
         lcd.begin(&Adafruit128x64, oled_i2c_address_ssd1306);
         lcd.setFont(fixed_bold10x15);
