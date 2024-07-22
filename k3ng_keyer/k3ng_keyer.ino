@@ -18728,10 +18728,18 @@ void initialize_display(){
   #ifdef FEATURE_DISPLAY  
 
     #ifdef FEATURE_OLED_SSD1306 
+      
       Wire.begin();
       Wire.setClock(400000L);
-      lcd.begin(&Adafruit128x64, oled_i2c_address_ssd1306);
-      lcd.setFont(fixed_bold10x15);
+      
+      if( oled_height == 64 ) {
+        lcd.begin(&Adafruit128x64, oled_i2c_address_ssd1306);
+        lcd.setFont(fixed_bold10x15);
+      } else {
+        lcd.begin(&Adafruit128x32, oled_i2c_address_ssd1306);
+        lcd.setFont(fixed_bold5x8);
+      }
+      
     #else
       #if defined(FEATURE_LCD_SAINSMART_I2C) || defined(FEATURE_LCD_I2C_FDEBRABANDER)
         lcd.begin();
