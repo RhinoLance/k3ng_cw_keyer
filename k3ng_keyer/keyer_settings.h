@@ -48,8 +48,6 @@
 #define lcd_i2c_address_sainsmart_lcd 0x27                // I2C address of display for FEATURE_LCD_SAINSMART_I2C 
 #define oled_i2c_address_ssd1306 0x3C                     // I2C address of display for FEATURE_OLED_SSD1306
 #define lcd_i2c_address_twiliquidcrystal_lcd 0x27                // I2C address of display for FEATURE_LCD_TWILIQUIDCRYSTAL
-#define oled_width 128                                    // Currently only used by the SSD1306 OLED display
-#define oled_height 32                                    // Currently only used by the SSD1306 OLED display
 #define hell_pixel_microseconds 4025
 #define program_memory_limit_consec_spaces 1
 #define serial_leading_zeros 1            // set to 1 to activate leading zeros in serial numbers (i.e. #1 = 001)

@@ -2139,6 +2139,26 @@ byte send_buffer_status = SERIAL_SEND_BUFFER_NORMAL;
   SSD1306AsciiWire lcd;
 #endif
 
+#if defined(FEATURE_OLED_SSD1306_64)
+  
+   #include <Wire.h>
+  #include "SSD1306Ascii.h"
+  #include "SSD1306AsciiWire.h"
+
+  //#include "src/display/IDisplay.h"
+  //#include "src/display/SSD1306Display64.h"
+  //#include "src/WireUtils.h"
+  
+  /*
+  TwoWire* wire = get_i2c_wire( PICO_I2C_BUS, PICO_I2C_SDA, PICO_I2C_SCL );
+  //Wire.setSDA(sda);
+	//Wire.setSCL(scl);
+  //Wire.begin();
+  IDisplay* display;
+  #define IDISPLAY
+*/
+#endif
+
 #if defined(FEATURE_USB_KEYBOARD) || defined(FEATURE_USB_MOUSE)
   USB Usb;
   uint32_t next_time;
@@ -7463,7 +7483,11 @@ void speed_set(int wpm_set){
     #endif //FEATURE_LED_RING
 
     #ifdef FEATURE_DISPLAY
-      lcd_center_print_timed_wpm();
+      //lcd_center_print_timed_wpm();
+    #endif
+
+    #ifdef IDISPLAY
+      display->setWpm(configuration.wpm);
     #endif
   }
 }
@@ -18725,30 +18749,47 @@ void ps2int_write() {
 void initialize_display(){
 
 
-  #ifdef FEATURE_DISPLAY  
+  
+
+    Wire.setSCL(PICO_I2C_SCL);
+    Wire.setSDA(PICO_I2C_SDA);
+    Wire.begin();
+    Wire.setClock(400000L);
+
+    SSD1306AsciiWire oled;
+    oled.begin(&Adafruit128x64, oled_i2c_address_ssd1306);
+    oled.clear();
+    oled.setCursor(0, 0);
+    
+    oled.setFont(Cooper26);
+    oled.print("23");
+
+    oled.setFont(Callibri11);
+    oled.print(" wpm");
+
+    return;
+
+  #define IDISPLAY
+  #ifdef IDISPLAY
+    
+    /*
+    display = new SSD1306Display64(&Wire, oled_i2c_address_ssd1306);
+    display->initialize();
+    //display->setWpm(configuration.wpm);
+    display->showSplashScreen("K3NG Keyer", custom_startup_field);
+*/
+    
+   
+  
+  #elif defined(FEATURE_DISPLAY)
 
     #ifdef FEATURE_OLED_SSD1306 
       
-      #if defined(ARDUINO_RASPBERRY_PI_PICO_W) || defined(ARDUINO_RASPBERRY_PI_PICO)
-        TwoWire wire = PICO_I2C_BUS == 0 ? Wire : Wire1;
+      Wire.begin();
+      Wire.setClock(400000L);
 
-        wire.setSDA(PICO_I2C_SDA);
-        wire.setSCL(PICO_I2C_SCL);
-
-        wire.begin();
-        wire.setClock(400000L);
-      #else
-        Wire.begin();
-        Wire.setClock(400000L);
-      #endif
-
-      if( oled_height == 64 ) {
-        lcd.begin(&Adafruit128x64, oled_i2c_address_ssd1306);
-        lcd.setFont(fixed_bold10x15);
-      } else {
-        lcd.begin(&Adafruit128x32, oled_i2c_address_ssd1306);
-        lcd.setFont(fixed_bold5x8);
-      }
+      lcd.begin(&Adafruit128x64, oled_i2c_address_ssd1306);
+      lcd.setFont(fixed_bold10x15);
       
     #else
       #if defined(FEATURE_LCD_SAINSMART_I2C) || defined(FEATURE_LCD_I2C_FDEBRABANDER)
