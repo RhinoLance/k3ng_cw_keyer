@@ -59,9 +59,3 @@ void SSD1306Display64::showSplashScreen(const char* title, const char* subText, 
 void SSD1306Display64::hideSplashScreen() {
 	display.clear();
 };
-
-void SSD1306Display64::printCwChar(char input) {
-	display.setFont(Callibri15);
-	display.setRow(6);
-	display.print(input);
-};

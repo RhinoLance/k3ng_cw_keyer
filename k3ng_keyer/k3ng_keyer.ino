@@ -3778,7 +3778,7 @@ void check_backlight() {
 
 #ifdef FEATURE_DISPLAY
 void service_display() {
- 
+
   #ifdef DEBUG_LOOP
   debug_serial_port->println(F("loop: entering service_display"));
   #endif
@@ -7479,7 +7479,7 @@ void speed_set(int wpm_set){
     #endif //FEATURE_LED_RING
 
     #ifdef FEATURE_DISPLAY
-      //lcd_center_print_timed_wpm();
+      lcd_center_print_timed_wpm();
     #endif
 
     #ifdef IDISPLAY
@@ -18744,28 +18744,6 @@ void ps2int_write() {
 
 void initialize_display(){
 
-/*
-    Wire.setSCL(PICO_I2C_SCL);
-    Wire.setSDA(PICO_I2C_SDA);
-    Wire.begin();
-    Wire.setClock(400000L);
-
-    SSD1306AsciiWire oled;
-    oled.begin(&Adafruit128x64, oled_i2c_address_ssd1306);
-    oled.clear();
-    oled.setCursor(0, 0);
-    
-    oled.setFont(Cooper26);
-    oled.print("23");
-
-    oled.setFont(Callibri11);
-    oled.print(" wpm");
-
-    return;
-
-  #define IDISPLAY
-  */
-
   #ifdef IDISPLAY
     
     TwoWire* wire = get_i2c_wire( PICO_I2C_BUS, PICO_I2C_SDA, PICO_I2C_SCL );
@@ -18784,9 +18762,10 @@ void initialize_display(){
     display->hideSplashScreen();
     display->setWpm(configuration.wpm);
     display->setBrightness(1); 
-   
+
+  #endif //IDISPLAY
   
-  #elif defined(FEATURE_DISPLAY)
+  #ifdef FEATURE_DISPLAY
 
     #ifdef FEATURE_OLED_SSD1306 
       
