@@ -7484,7 +7484,7 @@ void speed_set(int wpm_set){
 
     #ifdef IDISPLAY
       display->setWpm(configuration.wpm);
-    #endif
+    #endif // IDISPLAY
   }
 }
 //-------------------------------------------------------------------------------------------------------
@@ -10672,6 +10672,11 @@ void add_to_send_buffer(byte incoming_serial_byte)
 #ifdef FEATURE_WINKEY_EMULATION
 void winkey_unbuffered_speed_command(byte incoming_serial_byte) {
 
+  if( incoming_serial_byte == configuration.wpm ) {
+    //no change, so do nothing
+    return;
+  }
+
   if (incoming_serial_byte == 0) {
     #ifdef FEATURE_POTENTIOMETER
       configuration.pot_activated = 1;
@@ -10688,6 +10693,10 @@ void winkey_unbuffered_speed_command(byte incoming_serial_byte) {
     #ifdef FEATURE_LED_RING
       update_led_ring();
     #endif //FEATURE_LED_RING
+
+    #ifdef IDISPLAY
+      display->setWpm(configuration.wpm);
+    #endif // IDISPLAY
 
   }
 
