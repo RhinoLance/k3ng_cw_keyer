@@ -4,7 +4,7 @@
 
 // #define FEATURE_BUTTONS
 // #define FEATURE_COMMAND_MODE
-// #define FEATURE_COMMAND_LINE_INTERFACE // Command Line Interface functionality
+ #define FEATURE_COMMAND_LINE_INTERFACE // Command Line Interface functionality
 // #define FEATURE_MEMORIES               // on the Arduino Due, you must have FEATURE_EEPROM_E24C1024 and E24C1024 EEPROM hardware in order to compile this
 // #define FEATURE_MEMORY_MACROS
  #define FEATURE_WINKEY_EMULATION       // disabling Automatic Software Reset is highly recommended (see documentation)
@@ -40,7 +40,7 @@
 // #define FEATURE_CW_DECODER              // https://github.com/k3ng/k3ng_cw_keyer/wiki/385-Feature:-CW-Decoder 
 // #define FEATURE_SLEEP                   // go to sleep after x minutes to conserve battery power (not compatible with Arduino DUE, may have mixed results with Mega and Mega ADK)
 // #define FEATURE_LCD_BACKLIGHT_AUTO_DIM  // turn off LCD backlight and/or dim Power Indicator LED after x minutes (LED requires a PWM pin)
-// #define FEATURE_ROTARY_ENCODER          // rotary encoder speed control
+ #define FEATURE_ROTARY_ENCODER          // rotary encoder speed control
 // #define FEATURE_CMOS_SUPER_KEYER_IAMBIC_B_TIMING
 // #define FEATURE_USB_MOUSE               // Uncomment three lines in k3ng_keyer.ino (search for note_usb_uncomment_lines)
 // #define FEATURE_CAPACITIVE_PADDLE_PINS  // remove the bypass capacitors on the paddle_left and paddle_right lines when using capactive paddles
