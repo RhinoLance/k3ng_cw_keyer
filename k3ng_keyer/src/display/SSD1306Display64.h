@@ -14,6 +14,7 @@ class SSD1306Display64: public IDisplay {
 		void initialize( );
 		void setWpm(int wpm);
 		void showSplashScreen(const char* title, const char* subText);
+		void setBrightness(int brightness);
 };
 
 #endif // SSD1306Display64_H

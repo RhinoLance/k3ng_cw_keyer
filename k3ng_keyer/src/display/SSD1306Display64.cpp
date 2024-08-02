@@ -14,6 +14,10 @@ void SSD1306Display64::initialize() {
 	
 };
 
+void SSD1306Display64::setBrightness(int brightness) {
+	display.setContrast(brightness);
+};
+
 void SSD1306Display64::setWpm(int wpm) {
 	display.clear();
 	display.setCursor(0, 0);

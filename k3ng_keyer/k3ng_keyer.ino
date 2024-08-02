@@ -2141,22 +2141,18 @@ byte send_buffer_status = SERIAL_SEND_BUFFER_NORMAL;
 
 #if defined(FEATURE_OLED_SSD1306_64)
   
-   #include <Wire.h>
+  #include <Wire.h>
   #include "SSD1306Ascii.h"
   #include "SSD1306AsciiWire.h"
 
-  //#include "src/display/IDisplay.h"
-  //#include "src/display/SSD1306Display64.h"
-  //#include "src/WireUtils.h"
+  #include "src/display/IDisplay.h"
+  #include "src/display/SSD1306Display64.h"
+  #include "src/WireUtils.h"
   
-  /*
-  TwoWire* wire = get_i2c_wire( PICO_I2C_BUS, PICO_I2C_SDA, PICO_I2C_SCL );
-  //Wire.setSDA(sda);
-	//Wire.setSCL(scl);
-  //Wire.begin();
   IDisplay* display;
+  using TypedDisplay = SSD1306Display64;
   #define IDISPLAY
-*/
+
 #endif
 
 #if defined(FEATURE_USB_KEYBOARD) || defined(FEATURE_USB_MOUSE)
@@ -18748,9 +18744,7 @@ void ps2int_write() {
 
 void initialize_display(){
 
-
-  
-
+/*
     Wire.setSCL(PICO_I2C_SCL);
     Wire.setSDA(PICO_I2C_SDA);
     Wire.begin();
@@ -18770,15 +18764,22 @@ void initialize_display(){
     return;
 
   #define IDISPLAY
+  */
+
   #ifdef IDISPLAY
     
-    /*
-    display = new SSD1306Display64(&Wire, oled_i2c_address_ssd1306);
+    TwoWire* wire = get_i2c_wire( PICO_I2C_BUS, PICO_I2C_SDA, PICO_I2C_SCL );
+    wire->setClock(400000L);
+    wire->begin();
+
+    display = new TypedDisplay(wire, oled_i2c_address_ssd1306);
+
     display->initialize();
-    //display->setWpm(configuration.wpm);
     display->showSplashScreen("K3NG Keyer", custom_startup_field);
-*/
-    
+    delay(3000);
+    display->setWpm(configuration.wpm);
+    delay(3000);
+    display->setBrightness(1); 
    
   
   #elif defined(FEATURE_DISPLAY)
