@@ -7480,6 +7480,7 @@ void speed_set(int wpm_set){
 
     #ifdef FEATURE_DISPLAY
       lcd_center_print_timed_wpm();
+      lcd_center_print_timed_wpm();
     #endif
 
     #ifdef IDISPLAY
