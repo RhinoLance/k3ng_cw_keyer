@@ -18451,7 +18451,7 @@ void initialize_rotary_encoder(){
 
   #ifdef FEATURE_ROTARY_ENCODER
     #ifdef OPTION_ENCODER_ENABLE_PULLUPS
-      #if defined (ARDUINO_MAPLE_MINI)||defined(ARDUINO_GENERIC_STM32F103C) //sp5iou 20180329
+      #if defined (ARDUINO_MAPLE_MINI)||defined(ARDUINO_GENERIC_STM32F103C) || defined(ARDUINO_RASPBERRY_PI_PICO_W) || defined(ARDUINO_RASPBERRY_PI_PICO) //sp5iou 20180329
         pinMode(rotary_pin1, INPUT_PULLUP);//sp5iou 20180329
         pinMode(rotary_pin2, INPUT_PULLUP);//sp5iou 20180329
       #else // (ARDUINO_MAPLE_MINI)||defined(ARDUINO_GENERIC_STM32F103C) //sp5iou 20180329
