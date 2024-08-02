@@ -2,6 +2,9 @@
 #include "SSD1306AsciiWire.h"
 #include <Wire.h>
 
+const int DISPLAY_WIDTH = 128;
+const int DISPLAY_HEIGHT = 64;
+
 SSD1306Display64::SSD1306Display64(TwoWire* wire, int i2cAddress) {
 	
 	wire->begin();
@@ -19,24 +22,46 @@ void SSD1306Display64::setBrightness(int brightness) {
 };
 
 void SSD1306Display64::setWpm(int wpm) {
-	display.clear();
-	display.setCursor(0, 0);
 	
-	display.setFont(Cooper26);
-	display.print(wpm);
+	//int startCol = (DISPLAY_WIDTH - labelWidth - valueWidth) / 2;
+	char valBuffer[2];
+	itoa(wpm, valBuffer, 10);
+	display.setFont(CalLite24);
+	int valueWidth = display.strWidth(valBuffer);
+	int valCol = (DISPLAY_WIDTH - valueWidth) / 2;
+	display.setCursor(valCol, 0);
+	display.print(valBuffer);
 
-	display.setFont(Callibri11);
-	display.print(" wpm");
+	char labelBuffer[] = "wpm";
+	display.setFont(font5x7);
+	int labelWidth = display.strWidth(labelBuffer);
+	int labelCol = (DISPLAY_WIDTH - labelWidth) / 2;
+	display.setCursor(labelCol, 3);
+	display.print(labelBuffer);
 };
 
-void SSD1306Display64::showSplashScreen(const char* title, const char* subText){
+void SSD1306Display64::showSplashScreen(const char* title, const char* subText, const char* footer) {
 
 	display.clear();
 	display.setCursor(0, 0);
 	
 	display.setFont(Callibri15);
-	display.print("HELLO");
+	display.println(title);
 
 	display.setFont(Callibri11);
-	display.print("LANCE");
+	display.println(subText);
+	
+	display.setFont(Callibri10);
+	display.println(footer);
+
+};
+
+void SSD1306Display64::hideSplashScreen() {
+	display.clear();
+};
+
+void SSD1306Display64::printCwChar(char input) {
+	display.setFont(Callibri15);
+	display.setRow(6);
+	display.print(input);
 };

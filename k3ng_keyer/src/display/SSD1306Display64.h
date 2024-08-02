@@ -13,7 +13,8 @@ class SSD1306Display64: public IDisplay {
 		SSD1306Display64(TwoWire* wire, int i2cAddress);
 		void initialize( );
 		void setWpm(int wpm);
-		void showSplashScreen(const char* title, const char* subText);
+		void showSplashScreen(const char* title, const char* subText, const char* footer);
+		void hideSplashScreen();
 		void setBrightness(int brightness);
 };
 

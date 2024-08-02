@@ -3778,7 +3778,7 @@ void check_backlight() {
 
 #ifdef FEATURE_DISPLAY
 void service_display() {
-
+ 
   #ifdef DEBUG_LOOP
   debug_serial_port->println(F("loop: entering service_display"));
   #endif
@@ -18775,10 +18775,14 @@ void initialize_display(){
     display = new TypedDisplay(wire, oled_i2c_address_ssd1306);
 
     display->initialize();
-    display->showSplashScreen("K3NG Keyer", custom_startup_field);
-    delay(3000);
+    
+    char versionBuffer[50] = "Ver: ";
+    strcat(versionBuffer, CODE_VERSION);
+
+    display->showSplashScreen("K3NG Keyer", custom_startup_field, versionBuffer);
+    delay(8000);
+    display->hideSplashScreen();
     display->setWpm(configuration.wpm);
-    delay(3000);
     display->setBrightness(1); 
    
   
