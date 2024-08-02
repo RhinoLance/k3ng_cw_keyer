@@ -7480,7 +7480,6 @@ void speed_set(int wpm_set){
 
     #ifdef FEATURE_DISPLAY
       lcd_center_print_timed_wpm();
-      lcd_center_print_timed_wpm();
     #endif
 
     #ifdef IDISPLAY
@@ -18769,13 +18768,10 @@ void initialize_display(){
   #ifdef FEATURE_DISPLAY
 
     #ifdef FEATURE_OLED_SSD1306 
-      
       Wire.begin();
       Wire.setClock(400000L);
-
       lcd.begin(&Adafruit128x64, oled_i2c_address_ssd1306);
       lcd.setFont(fixed_bold10x15);
-      
     #else
       #if defined(FEATURE_LCD_SAINSMART_I2C) || defined(FEATURE_LCD_I2C_FDEBRABANDER)
         lcd.begin();

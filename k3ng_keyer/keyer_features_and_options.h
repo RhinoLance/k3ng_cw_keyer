@@ -35,7 +35,7 @@
 // #define FEATURE_LCD_MATHERTEL_PCF8574   // https://github.com/mathertel/LiquidCrystal_PCF8574
 // #define FEATURE_LCD_I2C_FDEBRABANDER    // https://github.com/fdebrabander/Arduino-LiquidCrystal-I2C-library
 // #define FEATURE_LCD_HD44780
-// #define FEATURE_OLED_SSD1306
+// #define FEATURE_OLED_SSD1306            // https://github.com/greiman/SSD1306Ascii
  #define FEATURE_OLED_SSD1306_64            // https://github.com/greiman/SSD1306Ascii
 // #define FEATURE_CW_DECODER              // https://github.com/k3ng/k3ng_cw_keyer/wiki/385-Feature:-CW-Decoder 
 // #define FEATURE_SLEEP                   // go to sleep after x minutes to conserve battery power (not compatible with Arduino DUE, may have mixed results with Mega and Mega ADK)
@@ -72,7 +72,7 @@
 // #define OPTION_WINKEY_DISCARD_BYTES_AT_STARTUP     // if ASR is not disabled, you may need this to discard errant serial port bytes at startup
 // #define OPTION_WINKEY_STRICT_EEPROM_WRITES_MAY_WEAR_OUT_EEPROM // with this activated the unit will write non-volatile settings to EEPROM when set by Winkey commands
 // #define OPTION_WINKEY_SEND_WORDSPACE_AT_END_OF_BUFFER
-// #define OPTION_WINKEY_STRICT_HOST_OPEN               // require an admin host open Winkey command before doing any other commands
+#define OPTION_WINKEY_STRICT_HOST_OPEN               // require an admin host open Winkey command before doing any other commands
 #define OPTION_WINKEY_2_SUPPORT                      // comment out to revert to Winkey version 1 emulation
 #define OPTION_WINKEY_SEND_BREAKIN_STATUS_BYTE
 #define OPTION_WINKEY_INTERRUPTS_MEMORY_REPEAT
@@ -121,7 +121,7 @@
 // #define OPTION_WORDSWORTH_NORSK
 // #define OPTION_WORDSWORTH_POLISH
 
- #define OPTION_EXCLUDE_EXTENDED_CLI_COMMANDS
+#define OPTION_EXCLUDE_EXTENDED_CLI_COMMANDS
 
 // #define OPTION_DFROBOT_LCD_COMMAND_BUTTONS
 
