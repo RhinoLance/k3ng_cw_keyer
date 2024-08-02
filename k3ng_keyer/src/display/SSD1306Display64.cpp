@@ -23,7 +23,8 @@ void SSD1306Display64::setBrightness(int brightness) {
 
 void SSD1306Display64::setWpm(int wpm) {
 	
-	//int startCol = (DISPLAY_WIDTH - labelWidth - valueWidth) / 2;
+	display.clear();
+
 	char valBuffer[2];
 	itoa(wpm, valBuffer, 10);
 	display.setFont(CalLite24);
