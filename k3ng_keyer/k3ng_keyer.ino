@@ -7479,7 +7479,7 @@ void speed_set(int wpm_set){
     #endif //FEATURE_LED_RING
 
     #ifdef FEATURE_DISPLAY
-      //lcd_center_print_timed_wpm();
+      lcd_center_print_timed_wpm();
     #endif
 
     #ifdef IDISPLAY
@@ -18784,7 +18784,8 @@ void initialize_display(){
     display->hideSplashScreen();
     display->setWpm(configuration.wpm);
     display->setBrightness(1); 
-   
+  
+  #endif //IDISPLAY
   
   #elif defined(FEATURE_DISPLAY)
 
