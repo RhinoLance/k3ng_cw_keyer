@@ -1447,7 +1447,7 @@ If you offer a hardware kit using this software, show your appreciation by sendi
 */
 
 
-#define CODE_VERSION "2024.03.20.2239"
+#define CODE_VERSION "2024.8.26.2240"
 
 #define eeprom_magic_number 41               // you can change this number to have the unit re-initialize EEPROM
 
@@ -3756,7 +3756,13 @@ void check_backlight() {
     if (keyer_power_led){
       analogWrite(keyer_power_led,keyer_power_led_asleep_duty);
     }
-    lcd.noBacklight();
+    #ifdef FEATURE_DISPLAY
+      lcd.noBacklight();
+    #endif //FEATURE_DISPLAY
+
+    #ifdef IDISPLAY
+      display->off();
+    #endif //IDISPLAY
 
   } else {
 
@@ -3767,7 +3773,14 @@ void check_backlight() {
     if (keyer_power_led){
       analogWrite(keyer_power_led,keyer_power_led_awake_duty);
     }
-    lcd.backlight();
+    
+    #ifdef FEATURE_DISPLAY
+      lcd.backlight();
+    #endif //FEATURE_DISPLAY
+
+    #ifdef IDISPLAY
+      display->on();
+    #endif //IDISPLAY
   }
 
 
@@ -9267,6 +9280,11 @@ void initialize_analog_button_array() {
 byte analogbuttonread(byte button_number) {
 
     if (button_array.Pressed(button_number)) {
+      
+      #ifdef FEATURE_LCD_BACKLIGHT_AUTO_DIM
+        last_active_time = millis();
+      #endif //FEATURE_LCD_BACKLIGHT_AUTO_DIM
+
       return 1;
     }
     return 0;

@@ -2,7 +2,7 @@
 // FEATURES add more bytes to the compiled binary, OPTIONS change code behavior
 
 
-// #define FEATURE_BUTTONS
+ #define FEATURE_BUTTONS
 // #define FEATURE_COMMAND_MODE
  #define FEATURE_COMMAND_LINE_INTERFACE // Command Line Interface functionality
 // #define FEATURE_MEMORIES               // on the Arduino Due, you must have FEATURE_EEPROM_E24C1024 and E24C1024 EEPROM hardware in order to compile this
@@ -39,7 +39,7 @@
  #define FEATURE_OLED_SSD1306_64            // https://github.com/greiman/SSD1306Ascii
 // #define FEATURE_CW_DECODER              // https://github.com/k3ng/k3ng_cw_keyer/wiki/385-Feature:-CW-Decoder 
 // #define FEATURE_SLEEP                   // go to sleep after x minutes to conserve battery power (not compatible with Arduino DUE, may have mixed results with Mega and Mega ADK)
-// #define FEATURE_LCD_BACKLIGHT_AUTO_DIM  // turn off LCD backlight and/or dim Power Indicator LED after x minutes (LED requires a PWM pin)
+ #define FEATURE_LCD_BACKLIGHT_AUTO_DIM  // turn off LCD backlight and/or dim Power Indicator LED after x minutes (LED requires a PWM pin)
  #define FEATURE_ROTARY_ENCODER          // rotary encoder speed control
 // #define FEATURE_CMOS_SUPER_KEYER_IAMBIC_B_TIMING
 // #define FEATURE_USB_MOUSE               // Uncomment three lines in k3ng_keyer.ino (search for note_usb_uncomment_lines)
@@ -62,7 +62,7 @@
 // #define FEATURE_INTERNET_LINK   // Details: https://github.com/k3ng/k3ng_cw_keyer/wiki/390-Feature:-Ethernet,-Web-Server,-and-Internet-Linking
 
 // #define FEATURE_COMMAND_LINE_INTERFACE_ON_SECONDARY_PORT     // Activate the Command Line interface on the secondary serial port
-// #define OPTION_PRIMARY_SERIAL_PORT_DEFAULT_WINKEY_EMULATION  // Use when activating both FEATURE_WINKEY_EMULATION and FEATURE_COMMAND_LINE_INTERFACE 
+ #define OPTION_PRIMARY_SERIAL_PORT_DEFAULT_WINKEY_EMULATION  // Use when activating both FEATURE_WINKEY_EMULATION and FEATURE_COMMAND_LINE_INTERFACE 
                                                              //    simultaneously.  This will make Winkey emulation be the default at boot up; 
                                                              //    hold command button down at boot up to activate CLI mode
 

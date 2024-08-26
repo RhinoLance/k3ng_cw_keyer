@@ -21,8 +21,27 @@ void SSD1306Display64::setBrightness(int brightness) {
 	display.setContrast(brightness);
 };
 
+void SSD1306Display64::on() {
+	if(_isOn) {
+		return;
+	}
+
+	setWpm(_wpm);
+};
+
+void SSD1306Display64::off() {
+	
+	if(!_isOn) {
+		return;
+	}
+
+	display.clear();
+};
+
 void SSD1306Display64::setWpm(int wpm) {
 	
+	_wpm = wpm;
+
 	display.clear();
 
 	char valBuffer[2];

@@ -53,7 +53,7 @@
 #define serial_leading_zeros 1            // set to 1 to activate leading zeros in serial numbers (i.e. #1 = 001)
 #define serial_cut_numbers 0              // set to 1 to activate cut numbers in serial numbers (i.e. #10 = 1T, #19 = 1N)
 #define go_to_sleep_inactivity_time 10    // minutes - FEATURE_SLEEP
-#define dim_backlight_inactive_time 5     // minutes - FEATURE_LCD_BACKLIGHT_AUTO_DIM
+#define dim_backlight_inactive_time 180     // minutes - FEATURE_LCD_BACKLIGHT_AUTO_DIM
 #define default_cmos_super_keyer_iambic_b_timing_percent 33 // use with FEATURE_CMOS_SUPER_KEYER_IAMBIC_B_TIMING; should be between 0 to 99 % (0% = true iambic b;100% = iambic a behavior)
 #define default_cw_echo_timing_factor 1.75 // "factory default" setting
 #define default_autospace_timing_factor 2.0 // "factory default" setting
